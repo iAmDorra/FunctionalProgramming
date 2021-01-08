@@ -7,7 +7,7 @@ namespace BankKata
     {
         internal List<Statement> Print()
         {
-            throw new NotImplementedException();
+            return new List<Statement>();
         }
 
         internal void Deposit(int v, DateTime dateTime)

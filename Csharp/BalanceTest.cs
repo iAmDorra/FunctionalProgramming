@@ -18,5 +18,13 @@ namespace BankKata
             List<Statement> statements = balance.Print();
             Check.That(statements.Count()).IsEqualTo(2);
         }
+
+        [TestMethod]
+        public void Should_return_no_statement_when_balance_is_empty()
+        {
+            Balance balance = new Balance();
+            List<Statement> statements = balance.Print();
+            Check.That(statements.Count()).IsEqualTo(0);
+        }
     }
 }
