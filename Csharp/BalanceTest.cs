@@ -1,8 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NFluent;
+using NSubstitute;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BankKata
 {
@@ -21,16 +20,14 @@ namespace BankKata
             const double withdrawAmount = 50.0;
             DateTime withdrawDate = new DateTime(2021, 01, 09);
             account.Withdraw(withdrawAmount, withdrawDate);
-            List<Statement> statements = account.PrintStatements();
-            Check.That(statements.Count()).IsEqualTo(2);
 
-            Check.That(statements[0].Date).IsEqualTo(depositDate);
-            Check.That(statements[0].Amount).IsEqualTo(depositAmount);
-            Check.That(statements[0].Balance).IsEqualTo(depositAmount);
-
-            Check.That(statements[1].Date).IsEqualTo(withdrawDate);
-            Check.That(statements[1].Amount).IsEqualTo(withdrawAmount);
-            Check.That(statements[1].Balance).IsEqualTo(depositAmount - withdrawAmount);
+            IPrinter printer = new Printer();
+            account.PrintStatements(printer);
+            var printedBalance = printer.Print();
+            string expectedBalance = "|Date|Amount|Balance|" +
+                "\n" + "|08/01/2020|200|200|" +
+                "\n" + "|09/01/2020|-50|150|";
+            Check.That(printedBalance).IsEqualTo(expectedBalance);
         }
 
         [TestMethod]
@@ -39,8 +36,9 @@ namespace BankKata
             const int initialBalance = 0;
             Account account = new Account(initialBalance);
 
-            List<Statement> statements = account.PrintStatements();
-            Check.That(statements.Count()).IsEqualTo(0);
+            IPrinter printer = Substitute.For<IPrinter>();
+            account.PrintStatements(printer);
+            printer.Received(0).AddLine();
         }
     }
 }
