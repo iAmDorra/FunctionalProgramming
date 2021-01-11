@@ -15,4 +15,8 @@
     <PackageReference Include="NSubstitute" Version="4.2.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BankKata.Application\BankKata.Application.csproj" />
+  </ItemGroup>
+
 </Project>

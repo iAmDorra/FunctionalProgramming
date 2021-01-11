@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("BankKata.Tests")]
 namespace BankKata
 {
     internal class Account
