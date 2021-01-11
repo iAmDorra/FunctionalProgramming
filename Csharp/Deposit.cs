@@ -4,11 +4,14 @@ namespace BankKata
 {
     internal class Deposit : Operation
     {
-        public Deposit(double amount, DateTime dateTime)
+        private Deposit(double amount, DateTime dateTime)
         {
             Amount = amount;
             Date = dateTime;
         }
+
+        public double Amount { get; private set; }
+        public DateTime Date { get; private set; }
 
         public static Deposit Of(double amount, DateTime dateTime)
         {

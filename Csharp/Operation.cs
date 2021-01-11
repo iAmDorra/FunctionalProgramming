@@ -2,10 +2,10 @@
 
 namespace BankKata
 {
-    internal class Operation
+    internal interface Operation
     {
-        public double Amount { get; internal set; }
-        public DateTime Date { get; internal set; }
+        double Amount { get; }
+        DateTime Date { get; }
 
         public Statement CreateStatement(double balance)
         {
