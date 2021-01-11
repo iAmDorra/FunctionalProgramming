@@ -4,7 +4,6 @@
     {
         public void AddLine()
         {
-            throw new System.NotImplementedException();
         }
 
         public string Print()

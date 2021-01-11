@@ -33,5 +33,22 @@ namespace BankKata
 
             printer.Received(1).AddLine();
         }
+
+        [TestMethod]
+        public void Should_add_two_lines_in_printer_when_print_two_statements()
+        {
+            var statements = new Statements();
+            double amount = 1;
+            DateTime dateTime = new DateTime(2021, 01, 08);
+            Transaction deposit = new Deposit(amount, dateTime);
+            double balance = 0;
+            statements.Add(deposit, balance);
+            statements.Add(deposit, balance);
+
+            IPrinter printer = Substitute.For<IPrinter>();
+            statements.Print(printer);
+
+            printer.Received(2).AddLine();
+        }
     }
 }
