@@ -33,5 +33,14 @@ namespace BankKata
             Check.That(statements[1].Balance).IsEqualTo(depositAmount - withdrawAmount);
         }
 
+        [TestMethod]
+        public void Should_return_no_statement_when_print_account_without_any_operation()
+        {
+            const int initialBalance = 0;
+            Account account = new Account(initialBalance);
+
+            List<Statement> statements = account.PrintStatements();
+            Check.That(statements.Count()).IsEqualTo(0);
+        }
     }
 }

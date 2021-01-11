@@ -6,6 +6,7 @@ namespace BankKata
     internal class Account
     {
         private double balance;
+        private List<Statement> statements = new List<Statement>();
 
         public Account(double initialBalance)
         {
@@ -24,7 +25,7 @@ namespace BankKata
 
         internal List<Statement> PrintStatements()
         {
-            throw new NotImplementedException();
+            return statements;
         }
     }
 }
