@@ -1,9 +1,21 @@
-﻿namespace BankKata
+﻿using System;
+
+namespace BankKata
 {
     internal class Statement
     {
-        public object Date { get; internal set; }
-        public object Amount { get; internal set; }
-        public object Balance { get; internal set; }
+        private Transaction deposit;
+        private double balance;
+
+        public Statement(Transaction deposit, double balance)
+        {
+            this.deposit = deposit;
+            this.balance = balance;
+        }
+
+        internal void Print(IPrinter printer)
+        {
+            deposit.Print(printer, balance);
+        }
     }
 }

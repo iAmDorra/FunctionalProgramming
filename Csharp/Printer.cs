@@ -1,8 +1,10 @@
-﻿namespace BankKata
+﻿using System;
+
+namespace BankKata
 {
     internal class Printer : IPrinter
     {
-        public void AddLine()
+        public void AddLine(DateTime dateTime, double amount, double balance)
         {
         }
 

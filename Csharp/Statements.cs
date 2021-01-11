@@ -9,12 +9,12 @@ namespace BankKata
 
         internal void Print(IPrinter printer)
         {
-            statements.ForEach(statement => printer.AddLine());
+            statements.ForEach(statement => statement.Print(printer));
         }
 
         internal void Add(Transaction transaction, double balance)
         {
-            statements.Add(new Statement());
+            statements.Add(new Statement(transaction, balance));
         }
     }
 }

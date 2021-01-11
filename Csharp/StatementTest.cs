@@ -11,7 +11,7 @@ namespace BankKata
         public void Should_not_print_when_no_statement_added()
         {
             var statements = new Statements();
-            
+
             IPrinter printer = Substitute.For<IPrinter>();
             statements.Print(printer);
 
@@ -31,7 +31,7 @@ namespace BankKata
             IPrinter printer = Substitute.For<IPrinter>();
             statements.Print(printer);
 
-            printer.Received(1).AddLine();
+            printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
         }
 
         [TestMethod]
@@ -48,7 +48,22 @@ namespace BankKata
             IPrinter printer = Substitute.For<IPrinter>();
             statements.Print(printer);
 
-            printer.Received(2).AddLine();
+            printer.Received(2).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
+        }
+
+        [TestMethod]
+        public void Should_print_statement_with_deposit_opration()
+        {
+            double amount = 1;
+            DateTime dateTime = new DateTime(2021, 01, 08);
+            Transaction deposit = new Deposit(amount, dateTime);
+            double balance = 0;
+            var statement = new Statement(deposit, balance);
+
+            IPrinter printer = Substitute.For<IPrinter>();
+            statement.Print(printer);
+
+            printer.Received(1).AddLine(dateTime, amount, balance);
         }
     }
 }

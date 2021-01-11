@@ -13,6 +13,11 @@ namespace BankKata
             this.dateTime = dateTime;
         }
 
+        public void Print(IPrinter printer, double balance)
+        {
+            printer.AddLine(dateTime, amount, balance);
+        }
+
         public double UpdateBalance(double balance)
         {
             return amount + balance;
