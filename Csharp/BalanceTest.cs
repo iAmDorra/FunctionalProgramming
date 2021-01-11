@@ -40,5 +40,21 @@ namespace BankKata
             account.PrintStatements(printer);
             printer.Received(0).AddLine();
         }
+
+        [TestMethod]
+        public void Should_return_one_statement_when_print_account_with_one_deposit()
+        {
+            const int initialBalance = 0;
+            Account account = new Account(initialBalance);
+
+            const double depositAmount = 200.0;
+            DateTime depositDate = new DateTime(2021, 01, 08);
+            account.Deposit(depositAmount, depositDate);
+
+            IPrinter printer = Substitute.For<IPrinter>();
+            account.PrintStatements(printer);
+            printer.Received(1).AddLine();
+        }
+
     }
 }
