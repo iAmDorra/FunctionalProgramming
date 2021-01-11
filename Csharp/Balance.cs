@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BankKata
 {
@@ -9,14 +10,16 @@ namespace BankKata
 
         internal List<Statement> Print()
         {
-            List<Statement> statements = new List<Statement>();
             double balance = 0;
-            foreach (var operation in operations)
-            {
-                Statement statement = operation.CreateStatement(balance);
-                balance = statement.Balance;
-                statements.Add(statement);
-            }
+            List<Statement> statements = operations
+                .Select(operation =>
+                {
+                    var statement = operation.CreateStatement(balance);
+                    balance = statement.Balance;
+                    return statement;
+                })
+                .ToList();
+
             return statements;
         }
 
