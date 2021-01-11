@@ -7,9 +7,9 @@ namespace BankKata
         private double amount;
         private DateTime dateTime;
 
-        public Deposit(double v, DateTime dateTime)
+        public Deposit(double amount, DateTime dateTime)
         {
-            this.amount = v;
+            this.amount = amount;
             this.dateTime = dateTime;
         }
 

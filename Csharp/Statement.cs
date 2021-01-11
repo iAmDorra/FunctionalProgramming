@@ -4,18 +4,18 @@ namespace BankKata
 {
     internal class Statement
     {
-        private Transaction deposit;
+        private Transaction transaction;
         private double balance;
 
-        public Statement(Transaction deposit, double balance)
+        public Statement(Transaction transaction, double balance)
         {
-            this.deposit = deposit;
+            this.transaction = transaction;
             this.balance = balance;
         }
 
         internal void Print(IPrinter printer)
         {
-            deposit.Print(printer, balance);
+            transaction.Print(printer, balance);
         }
     }
 }
