@@ -16,11 +16,17 @@ namespace BankKata
             DateTime depositeDate = new DateTime(2021, 01, 08);
             double depositAmount = 200;
             balance.Deposit(depositAmount, depositeDate);
+            
             DateTime withdrawDate = new DateTime(2021, 01, 09);
             double withdrawAmount = 50;
             balance.Withdraw(withdrawAmount, withdrawDate);
+
+            DateTime secondDepositeDate = new DateTime(2021, 01, 10);
+            double secondDepositAmount = 200;
+            balance.Deposit(secondDepositAmount, secondDepositeDate);
+            
             List<Statement> statements = balance.Print();
-            Check.That(statements.Count()).IsEqualTo(2);
+            Check.That(statements.Count()).IsEqualTo(3);
 
             Check.That(statements[0].Date).IsEqualTo(depositeDate);
             Check.That(statements[0].Amount).IsEqualTo(depositAmount);
@@ -29,6 +35,10 @@ namespace BankKata
             Check.That(statements[1].Date).IsEqualTo(withdrawDate);
             Check.That(statements[1].Amount).IsEqualTo(-withdrawAmount);
             Check.That(statements[1].Balance).IsEqualTo(depositAmount - withdrawAmount);
+
+            Check.That(statements[2].Date).IsEqualTo(secondDepositeDate);
+            Check.That(statements[2].Amount).IsEqualTo(secondDepositAmount);
+            Check.That(statements[2].Balance).IsEqualTo(depositAmount - withdrawAmount + secondDepositAmount);
         }
 
         [TestMethod]
