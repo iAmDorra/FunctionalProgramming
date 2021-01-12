@@ -15,7 +15,7 @@ namespace BankKata
 
         public void Print(IPrinter printer, double balance)
         {
-            printer.AddLine(dateTime, amount, balance);
+            printer.AddLine(dateTime, -amount, balance);
         }
 
         public double UpdateBalance(double balance)

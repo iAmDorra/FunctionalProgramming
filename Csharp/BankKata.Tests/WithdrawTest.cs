@@ -30,7 +30,7 @@ namespace BankKata
             IPrinter printer = Substitute.For<IPrinter>();
             withdraw.Print(printer, balance);
 
-            printer.Received(1).AddLine(dateTime, amount, balance);
+            printer.Received(1).AddLine(dateTime, -amount, balance);
         }
     }
 }
