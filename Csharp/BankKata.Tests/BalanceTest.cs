@@ -25,8 +25,8 @@ namespace BankKata
             account.PrintStatements(printer);
             var printedBalance = printer.Print();
             string expectedBalance = "|Date|Amount|Balance|" +
-                "\n" + "|08/01/2020|200|200|" +
-                "\n" + "|09/01/2020|-50|150|";
+                "\n" + "|08/01/2021|200|200|" +
+                "\n" + "|09/01/2021|-50|150|";
             Check.That(printedBalance).IsEqualTo(expectedBalance);
         }
 
