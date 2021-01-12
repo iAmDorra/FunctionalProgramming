@@ -24,6 +24,9 @@ namespace BankKata
 
         internal void Withdraw(double v, DateTime dateTime)
         {
+            Transaction withdraw = new Withdraw(v, dateTime);
+            balance = withdraw.UpdateBalance(balance);
+            statements.Add(withdraw, balance);
         }
 
         internal void PrintStatements(IPrinter printer)

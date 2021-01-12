@@ -56,5 +56,19 @@ namespace BankKata
             printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
         }
 
+        [TestMethod]
+        public void Should_return_one_statement_when_print_account_with_one_withdraw()
+        {
+            const int initialBalance = 0;
+            Account account = new Account(initialBalance);
+
+            const double withdrawAmount = 200.0;
+            DateTime withdrawDate = new DateTime(2021, 01, 08);
+            account.Withdraw(withdrawAmount, withdrawDate);
+
+            IPrinter printer = Substitute.For<IPrinter>();
+            account.PrintStatements(printer);
+            printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
+        }
     }
 }
