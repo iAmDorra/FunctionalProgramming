@@ -22,7 +22,8 @@ namespace BankKata
         [TestMethod]
         public void Should_print_deposit_with_right_info()
         {
-            var balance = Amount.Of( 2.1);
+            const double balanceAmount = 2.1;
+            var balance = Amount.Of(balanceAmount);
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
             Transaction deposit = new Deposit(amount, dateTime);
@@ -30,7 +31,7 @@ namespace BankKata
             IPrinter printer = Substitute.For<IPrinter>();
             deposit.Print(printer, balance);
 
-            printer.Received(1).AddLine(dateTime, Amount.Of(amount), balance);
+            printer.Received(1).AddLine(dateTime, amount, balanceAmount);
         }
     }
 }

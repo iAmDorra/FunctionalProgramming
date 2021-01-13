@@ -31,7 +31,7 @@ namespace BankKata
             IPrinter printer = Substitute.For<IPrinter>();
             statements.Print(printer);
 
-            printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<Amount>(), Arg.Any<Amount>());
+            printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
         }
 
         [TestMethod]
@@ -48,23 +48,23 @@ namespace BankKata
             IPrinter printer = Substitute.For<IPrinter>();
             statements.Print(printer);
 
-            printer.Received(2).AddLine(Arg.Any<DateTime>(), Arg.Any<Amount>(), Arg.Any<Amount>());
+            printer.Received(2).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
         }
 
         [TestMethod]
         public void Should_print_statement_with_deposit_opration()
         {
             double depositAmount = 1;
-            Amount amount = Amount.Of(depositAmount);
             DateTime dateTime = new DateTime(2021, 01, 08);
             Transaction deposit = new Deposit(depositAmount, dateTime);
-            Amount balance = Amount.Of(0);
+            double balanceAmount = 0;
+            Amount balance = Amount.Of(balanceAmount);
             var statement = new Statement(deposit, balance);
 
             IPrinter printer = Substitute.For<IPrinter>();
             statement.Print(printer);
 
-            printer.Received(1).AddLine(dateTime, amount, balance);
+            printer.Received(1).AddLine(dateTime, depositAmount, balanceAmount);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace BankKata
 
             IPrinter printer = Substitute.For<IPrinter>();
             account.PrintStatements(printer);
-            printer.Received(0).AddLine(Arg.Any<DateTime>(), Arg.Any<Amount>(), Arg.Any<Amount>());
+            printer.Received(0).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace BankKata
 
             IPrinter printer = Substitute.For<IPrinter>();
             account.PrintStatements(printer);
-            printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<Amount>(), Arg.Any<Amount>());
+            printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
         }
 
         [TestMethod]
@@ -68,7 +68,7 @@ namespace BankKata
 
             IPrinter printer = Substitute.For<IPrinter>();
             account.PrintStatements(printer);
-            printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<Amount>(), Arg.Any<Amount>());
+            printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
         }
     }
 }

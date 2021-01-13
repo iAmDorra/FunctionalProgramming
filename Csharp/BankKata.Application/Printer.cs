@@ -6,7 +6,7 @@ namespace BankKata
     {
         private string line = string.Empty;
 
-        public void AddLine(DateTime dateTime, Amount amount, Amount balance)
+        public void AddLine(DateTime dateTime, double amount, double balance)
         {
             var date = dateTime.ToString("d");
             line += "\n" + $"|{date}|{amount}|{balance}|";

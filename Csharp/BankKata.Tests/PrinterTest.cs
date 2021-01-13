@@ -11,8 +11,8 @@ namespace BankKata.Tests
         {
             var printer = new Printer();
             System.DateTime date = new System.DateTime(2020, 01, 08);
-            var balance = Amount.Of(200);
-            var amount = Amount.Of(200);
+            var balance = 200;
+            var amount = 200;
             printer.AddLine(date, amount, balance);
 
             var printedLine = printer.Print();
@@ -27,14 +27,13 @@ namespace BankKata.Tests
         {
             var printer = new Printer();
             System.DateTime date = new System.DateTime(2020, 01, 08);
-            int balanceValue = 200;
-            var balance = Amount.Of(balanceValue);
-            var amount = Amount.Of(200);
+            int balance = 200;
+            var amount = 200;
             printer.AddLine(date, amount, balance);
 
             System.DateTime secondDate = new System.DateTime(2020, 01, 09);
             double secondAmount = 100;
-            printer.AddLine(secondDate, Amount.Of(secondAmount), Amount.Of(balanceValue + secondAmount));
+            printer.AddLine(secondDate, secondAmount, balance + secondAmount);
 
             var printedLine = printer.Print();
 

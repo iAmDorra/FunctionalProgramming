@@ -2,7 +2,7 @@
 {
     public interface IPrinter
     {
-        void AddLine(System.DateTime dateTime, Amount amount, Amount balance);
+        void AddLine(System.DateTime dateTime, double amount, double balance);
         string Print();
     }
 }

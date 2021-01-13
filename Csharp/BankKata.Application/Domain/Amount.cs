@@ -21,6 +21,11 @@ namespace BankKata
             return new Amount(-amount);
         }
 
+        internal void PrintLine(IPrinter printer, DateTime dateTime, Amount balance)
+        {
+            printer.AddLine(dateTime, value, balance.value);
+        }
+
         internal Amount Add(Amount amount)
         {
             return Amount.Of(this.value + amount.value);
@@ -32,9 +37,9 @@ namespace BankKata
             return amount != null && value == amount.value;
         }
 
-        public override string ToString()
+        public override int GetHashCode()
         {
-            return value.ToString();
+            return base.GetHashCode();
         }
     }
 }
