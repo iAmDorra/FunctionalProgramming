@@ -25,13 +25,13 @@ namespace BankKata
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
             Transaction deposit = new Deposit(amount, dateTime);
-            double balance = 0;
+            Amount balance = new Amount(0);
             statements.Add(deposit, balance);
 
             IPrinter printer = Substitute.For<IPrinter>();
             statements.Print(printer);
 
-            printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
+            printer.Received(1).AddLine(Arg.Any<DateTime>(), Arg.Any<Amount>(), Arg.Any<Amount>());
         }
 
         [TestMethod]
@@ -41,23 +41,24 @@ namespace BankKata
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
             Transaction deposit = new Deposit(amount, dateTime);
-            double balance = 0;
+            Amount balance = new Amount(0);
             statements.Add(deposit, balance);
             statements.Add(deposit, balance);
 
             IPrinter printer = Substitute.For<IPrinter>();
             statements.Print(printer);
 
-            printer.Received(2).AddLine(Arg.Any<DateTime>(), Arg.Any<double>(), Arg.Any<double>());
+            printer.Received(2).AddLine(Arg.Any<DateTime>(), Arg.Any<Amount>(), Arg.Any<Amount>());
         }
 
         [TestMethod]
         public void Should_print_statement_with_deposit_opration()
         {
-            double amount = 1;
+            double depositAmount = 1;
+            Amount amount = new Amount(depositAmount);
             DateTime dateTime = new DateTime(2021, 01, 08);
-            Transaction deposit = new Deposit(amount, dateTime);
-            double balance = 0;
+            Transaction deposit = new Deposit(depositAmount, dateTime);
+            Amount balance = new Amount(0);
             var statement = new Statement(deposit, balance);
 
             IPrinter printer = Substitute.For<IPrinter>();

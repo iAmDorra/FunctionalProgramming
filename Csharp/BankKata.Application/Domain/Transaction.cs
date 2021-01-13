@@ -2,7 +2,7 @@
 {
     internal interface Transaction
     {
-        double UpdateBalance(double balance);
-        void Print(IPrinter printer, double balance);
+        Amount UpdateBalance(Amount balance);
+        void Print(IPrinter printer, Amount balance);
     }
 }

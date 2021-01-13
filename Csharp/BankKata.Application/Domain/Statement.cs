@@ -5,9 +5,9 @@ namespace BankKata
     internal class Statement
     {
         private Transaction transaction;
-        private double balance;
+        private Amount balance;
 
-        public Statement(Transaction transaction, double balance)
+        public Statement(Transaction transaction, Amount balance)
         {
             this.transaction = transaction;
             this.balance = balance;

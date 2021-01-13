@@ -12,7 +12,7 @@ namespace BankKata
             statements.ForEach(statement => statement.Print(printer));
         }
 
-        internal void Add(Transaction transaction, double balance)
+        internal void Add(Transaction transaction, Amount balance)
         {
             statements.Add(new Statement(transaction, balance));
         }

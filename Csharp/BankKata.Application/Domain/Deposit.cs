@@ -4,23 +4,23 @@ namespace BankKata
 {
     internal class Deposit : Transaction
     {
-        private double amount;
+        private Amount amount;
         private DateTime dateTime;
 
         public Deposit(double amount, DateTime dateTime)
         {
-            this.amount = amount;
+            this.amount = new Amount(amount);
             this.dateTime = dateTime;
         }
 
-        public void Print(IPrinter printer, double balance)
+        public void Print(IPrinter printer, Amount balance)
         {
             printer.AddLine(dateTime, amount, balance);
         }
 
-        public double UpdateBalance(double balance)
+        public Amount UpdateBalance(Amount balance)
         {
-            return amount + balance;
+            return balance.Add(amount);
         }
     }
 }

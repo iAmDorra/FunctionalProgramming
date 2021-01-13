@@ -6,12 +6,12 @@ namespace BankKata
 {
     internal class Account
     {
-        private double balance;
+        private Amount balance;
         private Statements statements;
 
         public Account(double initialBalance)
         {
-            this.balance = initialBalance;
+            this.balance = new Amount(initialBalance);
             statements = new Statements();
         }
 
