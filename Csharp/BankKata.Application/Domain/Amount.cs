@@ -11,11 +11,6 @@ namespace BankKata
             this.value = value;
         }
 
-        internal Amount Add(double value)
-        {
-            return Amount.Of(this.value + value);
-        }
-
         internal static Amount Of(double amount)
         {
             return new Amount(amount);
