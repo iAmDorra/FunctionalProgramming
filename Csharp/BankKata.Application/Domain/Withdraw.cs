@@ -9,7 +9,7 @@ namespace BankKata
 
         public Withdraw(double amount, DateTime dateTime)
         {
-            this.amount = new Amount(-amount); //Amount.NegativeOf(amount);
+            this.amount = Amount.NegativeOf(amount);
             this.dateTime = dateTime;
         }
 

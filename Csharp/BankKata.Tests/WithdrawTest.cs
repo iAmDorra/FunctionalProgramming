@@ -15,14 +15,14 @@ namespace BankKata
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
             Transaction withdraw = new Withdraw(amount, dateTime);
-            var newBalance = withdraw.UpdateBalance(new Amount(balance));
-            Check.That(newBalance).IsEqualTo(new Amount(1.1));
+            var newBalance = withdraw.UpdateBalance(Amount.Of(balance));
+            Check.That(newBalance).IsEqualTo(Amount.Of(1.1));
         }
 
         [TestMethod]
         public void Should_print_withdraw_with_right_info()
         {
-            var balance = new Amount(2.1);
+            var balance = Amount.Of(2.1);
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
             Transaction withdraw = new Withdraw(amount, dateTime);
@@ -30,7 +30,7 @@ namespace BankKata
             IPrinter printer = Substitute.For<IPrinter>();
             withdraw.Print(printer, balance);
 
-            printer.Received(1).AddLine(dateTime, new Amount(-amount), balance);
+            printer.Received(1).AddLine(dateTime, Amount.Of(-amount), balance);
         }
     }
 }

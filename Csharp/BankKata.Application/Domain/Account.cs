@@ -11,7 +11,7 @@ namespace BankKata
 
         public Account(double initialBalance)
         {
-            this.balance = new Amount(initialBalance);
+            this.balance = Amount.Of(initialBalance);
             statements = new Statements();
         }
 

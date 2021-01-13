@@ -25,7 +25,7 @@ namespace BankKata
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
             Transaction deposit = new Deposit(amount, dateTime);
-            Amount balance = new Amount(0);
+            Amount balance = Amount.Of(0);
             statements.Add(deposit, balance);
 
             IPrinter printer = Substitute.For<IPrinter>();
@@ -41,7 +41,7 @@ namespace BankKata
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
             Transaction deposit = new Deposit(amount, dateTime);
-            Amount balance = new Amount(0);
+            Amount balance = Amount.Of(0);
             statements.Add(deposit, balance);
             statements.Add(deposit, balance);
 
@@ -55,10 +55,10 @@ namespace BankKata
         public void Should_print_statement_with_deposit_opration()
         {
             double depositAmount = 1;
-            Amount amount = new Amount(depositAmount);
+            Amount amount = Amount.Of(depositAmount);
             DateTime dateTime = new DateTime(2021, 01, 08);
             Transaction deposit = new Deposit(depositAmount, dateTime);
-            Amount balance = new Amount(0);
+            Amount balance = Amount.Of(0);
             var statement = new Statement(deposit, balance);
 
             IPrinter printer = Substitute.For<IPrinter>();

@@ -9,7 +9,7 @@ namespace BankKata
 
         public Deposit(double amount, DateTime dateTime)
         {
-            this.amount = new Amount(amount);
+            this.amount = Amount.Of(amount);
             this.dateTime = dateTime;
         }
 

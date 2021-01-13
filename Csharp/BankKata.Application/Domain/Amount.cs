@@ -6,24 +6,29 @@ namespace BankKata
     {
         private double value;
 
-        public Amount(double value)
+        private Amount(double value)
         {
             this.value = value;
         }
 
         internal Amount Add(double value)
         {
-            return new Amount(this.value + value);
+            return Amount.Of(this.value + value);
+        }
+
+        internal static Amount Of(double amount)
+        {
+            return new Amount(amount);
         }
 
         internal static Amount NegativeOf(double amount)
         {
-            throw new NotImplementedException();
+            return new Amount(-amount);
         }
 
         internal Amount Add(Amount amount)
         {
-            return new Amount(this.value + amount.value);
+            return Amount.Of(this.value + amount.value);
         }
 
         public override bool Equals(object obj)
