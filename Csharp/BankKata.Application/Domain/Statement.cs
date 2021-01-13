@@ -4,10 +4,10 @@ namespace BankKata
 {
     internal class Statement
     {
-        private Transaction transaction;
-        private Amount balance;
+        private readonly ITransaction transaction;
+        private readonly Amount balance;
 
-        public Statement(Transaction transaction, Amount balance)
+        public Statement(ITransaction transaction, Amount balance)
         {
             this.transaction = transaction;
             this.balance = balance;

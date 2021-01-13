@@ -24,7 +24,7 @@ namespace BankKata
             var statements = new Statements();
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
-            Transaction deposit = new Deposit(amount, dateTime);
+            ITransaction deposit = new Deposit(amount, dateTime);
             Amount balance = Amount.Of(0);
             statements.Add(deposit, balance);
 
@@ -40,7 +40,7 @@ namespace BankKata
             var statements = new Statements();
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
-            Transaction deposit = new Deposit(amount, dateTime);
+            ITransaction deposit = new Deposit(amount, dateTime);
             Amount balance = Amount.Of(0);
             statements.Add(deposit, balance);
             statements.Add(deposit, balance);
@@ -56,7 +56,7 @@ namespace BankKata
         {
             double depositAmount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
-            Transaction deposit = new Deposit(depositAmount, dateTime);
+            ITransaction deposit = new Deposit(depositAmount, dateTime);
             double balanceAmount = 0;
             Amount balance = Amount.Of(balanceAmount);
             var statement = new Statement(deposit, balance);

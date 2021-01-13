@@ -2,10 +2,10 @@
 
 namespace BankKata
 {
-    internal class Withdraw : Transaction
+    internal class Withdraw : ITransaction
     {
-        private Amount amount;
-        private DateTime dateTime;
+        private readonly Amount amount;
+        private readonly DateTime dateTime;
 
         public Withdraw(double amount, DateTime dateTime)
         {

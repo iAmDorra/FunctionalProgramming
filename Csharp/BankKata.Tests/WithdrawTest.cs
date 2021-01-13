@@ -14,7 +14,7 @@ namespace BankKata
             var balance = 2.1;
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
-            Transaction withdraw = new Withdraw(amount, dateTime);
+            ITransaction withdraw = new Withdraw(amount, dateTime);
             var newBalance = withdraw.UpdateBalance(Amount.Of(balance));
             Check.That(newBalance).IsEqualTo(Amount.Of(1.1));
         }
@@ -26,7 +26,7 @@ namespace BankKata
             var balance = Amount.Of(balanceAmount);
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
-            Transaction withdraw = new Withdraw(amount, dateTime);
+            ITransaction withdraw = new Withdraw(amount, dateTime);
 
             IPrinter printer = Substitute.For<IPrinter>();
             withdraw.Print(printer, balance);

@@ -14,7 +14,7 @@ namespace BankKata
             var balance = 2.1;
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
-            Transaction deposit = new Deposit(amount, dateTime);
+            ITransaction deposit = new Deposit(amount, dateTime);
             var newBalance = deposit.UpdateBalance(Amount.Of(balance));
             Check.That(newBalance).IsEqualTo(Amount.Of(3.1));
         }
@@ -26,7 +26,7 @@ namespace BankKata
             var balance = Amount.Of(balanceAmount);
             double amount = 1;
             DateTime dateTime = new DateTime(2021, 01, 08);
-            Transaction deposit = new Deposit(amount, dateTime);
+            ITransaction deposit = new Deposit(amount, dateTime);
             
             IPrinter printer = Substitute.For<IPrinter>();
             deposit.Print(printer, balance);

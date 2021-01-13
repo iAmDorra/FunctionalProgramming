@@ -4,7 +4,7 @@ namespace BankKata
 {
     public class Amount
     {
-        private double value;
+        private readonly double value;
 
         private Amount(double value)
         {
@@ -33,8 +33,7 @@ namespace BankKata
 
         public override bool Equals(object obj)
         {
-            var amount = obj as Amount;
-            return amount != null && value == amount.value;
+            return obj is Amount amount && value == amount.value;
         }
 
         public override int GetHashCode()
